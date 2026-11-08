@@ -1,0 +1,3 @@
+<?php require 'includes/functions.php'; head('Upload complete');$n=(int)($_SESSION['uploaded']??0);?>
+<div class="text-center glass p-5 rounded-4"><i class="fa-solid fa-circle-check fa-4x text-success mb-3"></i><h2>Thank you!</h2><p><?=$n?> photo(s) uploaded. Photos appear on the slideshow after admin approval and only if you gave display consent.</p><a class="btn btn-primary rounded-pill" href="upload.php">Upload more</a> <a class="btn btn-outline-secondary rounded-pill" href="slideshow.php">View slideshow</a> <a class="btn btn-link" href="consent.php">Manage my consent</a></div>
+<?php foot();

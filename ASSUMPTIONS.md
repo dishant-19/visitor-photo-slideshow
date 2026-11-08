@@ -1,0 +1,12 @@
+# Assumptions
+- Runs locally on XAMPP (Windows), PHP 8+, MySQL/MariaDB, GD extension enabled (default in XAMPP).
+- "Verified" returning visitors = matched on normalised email or mobile. No email/SMS verification is sent, so the identifier is trusted, not proven.
+- The visitor ID (`V` + 8 hex chars) is generated automatically; it is not typed by the visitor.
+- Photos start as *pending* unless the admin enables auto-approve; display also needs the visitor's display consent.
+- Withdrawing consent is done by an admin on the visitor's request (no visitor login exists).
+- The first person to open `admin/login.php` with an empty admins table creates the admin. Do this immediately after install; do not expose this to the internet before then.
+- No HTTPS locally; set the session cookie `secure` flag when deploying with HTTPS.
+- CDN assets (Bootstrap, Font Awesome) need internet access.
+- The server needs the GD extension; the EXIF extension is optional (used only to keep JPEG orientation).
+- Login throttling is per IP address (5 failures in 15 minutes) via the `login_attempts` table; behind a proxy all users may share one IP.
+- Visitor self-service consent changes require the visitor ID plus the registered email or mobile; this is not verified by a one-time code.

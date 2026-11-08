@@ -1,0 +1,8 @@
+<?php require '../includes/functions.php';require '../includes/admin_ui.php';admin_only();require '../includes/admin_actions.php';
+$vid=(int)($_GET['id']??0);$s=$pdo->prepare('SELECT * FROM visitors WHERE id=?');$s->execute([$vid]);$v=$s->fetch();if(!$v){header('Location: visitors.php');exit;}
+$s=$pdo->prepare('SELECT p.*,v.name,v.display_consent FROM photos p JOIN visitors v ON v.id=p.visitor_id WHERE v.id=? ORDER BY p.id DESC');$s->execute([$vid]);$ph=$s->fetchAll();
+admin_head('Visitor');?>
+<div class="glass p-3 rounded-4 mb-3"><h4><?=e($v['name'])?> <small class="text-secondary"><?=e($v['code'])?></small></h4><p class="mb-0">Email: <?=e($v['email']?:'-')?> · Mobile: <?=e($v['mobile']?:'-')?> · Visits: <?=$v['visits']?> · Privacy consent: <?=$v['privacy_consent']?'Yes':'No'?> · Display consent: <?=$v['display_consent']?'Yes':'No'?></p></div>
+<form method="post" class="glass p-3 rounded-4 mb-4"><?=csrf_field()?><input type="hidden" name="do" value="edit_visitor"><input type="hidden" name="id" value="<?=$v['id']?>"><h5>Edit visitor</h5><div class="row g-2"><div class="col-md"><input class="form-control" name="name" value="<?=e($v['name'])?>" required></div><div class="col-md"><input class="form-control" name="email" type="email" placeholder="Email" value="<?=e($v['email'])?>"></div><div class="col-md"><input class="form-control" name="mobile" placeholder="Mobile" value="<?=e($v['mobile'])?>"></div><div class="col-md-auto"><button class="btn btn-primary rounded-pill">Save</button></div></div></form>
+<div class="row g-3"><?php foreach($ph as $p)photo_card($p,$vid);if(!$ph)echo '<p class="text-secondary">No photos from this visitor.</p>';?></div>
+<?php foot('../');

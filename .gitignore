@@ -1,0 +1,4 @@
+uploads/photos/*
+!uploads/photos/.gitkeep
+!uploads/photos/sample-*.jpg
+.env

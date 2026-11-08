@@ -1,0 +1,6 @@
+<?php $adm=strpos($_SERVER['SCRIPT_NAME'],'/admin/')!==false;?>
+<!doctype html><html lang="en" data-bs-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><script>(function(){try{var t=localStorage.getItem("vps-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-bs-theme",t)}catch(e){}})()</script><title><?=e($title)?> · Visitor Photo Slideshow</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="<?=$base?>assets/css/style.css" rel="stylesheet"><link href="<?=$base?>assets/css/theme.css" rel="stylesheet"><?php if($adm)echo '<link href="'.$base.'assets/css/admin.css" rel="stylesheet">';?><link href="<?=$base?>assets/css/responsive.css" rel="stylesheet"></head><body class="<?=$adm?'admin':'public'?>">
+<div id="loader"><img src="<?=$base?>assets/images/logo.png" width="72" height="72" alt=""><div class="spin"></div></div><canvas id="particles"></canvas>

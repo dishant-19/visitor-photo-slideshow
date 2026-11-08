@@ -1,0 +1,8 @@
+/* theme toggle: 3D flip coin (moon = dark, sun = light) + circular wipe */
+.theme-toggle{display:grid;place-items:center;perspective:300px;cursor:pointer}
+.coin{display:grid;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,1.3,.5,1)}
+.coin i{grid-area:1/1;place-self:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;font-size:1.05rem}
+.coin i:last-child{transform:rotateY(180deg)}
+[data-bs-theme=light] .coin{transform:rotateY(180deg)}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-old(root){z-index:1}::view-transition-new(root){z-index:2}

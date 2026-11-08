@@ -1,0 +1,18 @@
+:root,[data-bs-theme=dark]{color-scheme:dark;--stage:#000;--ink:#fff;--gold-text:#D4AF37;--cap:linear-gradient(transparent,rgba(0,0,0,.72));--ctl:rgba(255,255,255,.08);--ln:rgba(212,175,55,.6);--spot:rgba(212,175,55,.14)}
+[data-bs-theme=light]{color-scheme:light;--stage:#ecebe6;--ink:#1c1b18;--gold-text:#7a5a06;--cap:linear-gradient(transparent,rgba(245,245,242,.93));--ctl:rgba(255,255,255,.75);--ln:rgba(122,90,6,.55);--spot:rgba(201,162,39,.25)}
+body.show{background:var(--stage);overflow:hidden;color:var(--ink);font-family:Inter,system-ui,sans-serif}
+.show::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 40%,var(--spot),transparent 62%)}
+.slide{position:fixed;inset:0;width:100%;height:100%;object-fit:contain;opacity:0}
+.slide.on{animation:sin 1.6s cubic-bezier(.2,.8,.2,1) both,kb 16s ease-out forwards}
+.slide.out{animation:sout 1.4s cubic-bezier(.5,0,.8,.4) both}
+@keyframes sin{from{opacity:0;transform:perspective(1600px) translateX(14%) rotateY(-38deg) scale(.82)}to{opacity:1;transform:perspective(1600px)}}
+@keyframes sout{from{opacity:1;transform:perspective(1600px)}to{opacity:0;transform:perspective(1600px) translateX(-14%) rotateY(38deg) scale(.82)}}
+@keyframes kb{from{scale:1}to{scale:1.06}}
+.caption{position:fixed;left:0;right:0;bottom:0;padding:2rem;font-size:clamp(1.2rem,3vw,2.2rem);background:var(--cap);font-family:"Playfair Display",Georgia,serif;color:var(--gold-text);display:flex;flex-direction:column;gap:.2rem}
+.caption b{font-weight:700;animation:capin .9s .3s cubic-bezier(.2,.8,.2,1) both}.caption small{font-family:Inter,sans-serif;color:var(--ink);font-size:.45em;opacity:.85;animation:capin .9s .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes capin{from{opacity:0;transform:perspective(600px) translateZ(-60px) translateY(14px)}}
+.controls{position:fixed;top:12px;right:12px;display:flex;gap:8px;opacity:.35;transition:opacity .3s}.controls:hover,.controls:focus-within{opacity:1}
+.controls button,.controls a{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;text-decoration:none;cursor:pointer;background:var(--ctl);backdrop-filter:blur(10px);border:1px solid var(--ln);color:var(--gold-text);transition:box-shadow .2s,transform .2s}
+.controls button:hover,.controls a:hover{box-shadow:0 0 14px var(--ln);transform:translateY(-2px)}
+.empty{position:fixed;inset:0;display:none;place-items:center;align-content:center;text-align:center}.empty i{color:var(--gold-text)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.slide.on{opacity:1}}

@@ -1,0 +1,4 @@
+@media (max-width:991.98px){.hero{min-height:0}.hero-grid{grid-template-columns:1fr;text-align:center}.stage{height:300px}}
+@media (max-width:767.98px){main.container{padding-top:1.25rem!important}.hero{border-radius:20px}.display-3{font-size:2.2rem}.display-5{font-size:2rem}.gal{grid-template-columns:repeat(2,1fr);gap:.6rem}.gcard figcaption{padding:.5rem .6rem}.glass.p-5{padding:1.5rem!important}.table{font-size:.85rem}.navbar-collapse{padding:.5rem 0}}
+@media (max-width:420px){.gal{grid-template-columns:1fr}}
+@media (min-width:1400px){.show .caption{font-size:2.6rem}}
